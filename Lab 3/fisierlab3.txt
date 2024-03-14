@@ -1,0 +1,335 @@
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+Ok, one module loaded.
+ghci> :i MobileDevice
+type MobileDevice :: *
+data MobileDevice = Smartphone | Laptop | Tablet
+        -- Defined at fisaLab3.hs:1:1
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+Ok, one module loaded.
+ghci> :i MobileDevice  
+type MobileDevice :: *
+data MobileDevice = Smartphone | Laptop | Tablet
+        -- Defined at fisaLab3.hs:1:1
+instance Show MobileDevice -- Defined at fisaLab3.hs:3:23
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+Ok, one module loaded.
+ghci> :i MobileDevice  
+type MobileDevice :: *
+data MobileDevice = Smartphone | Laptop | Tablet
+        -- Defined at fisaLab3.hs:1:1
+instance Show MobileDevice -- Defined at fisaLab3.hs:4:14
+ghci> Laptop
+Laptop
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:7:11: error:
+    * The constructor `Laptop' should have 2 arguments, but has been given none
+    * In the pattern: Laptop
+      In an equation for `descriere': descriere Laptop = Laptop Culori
+  |
+7 | descriere Laptop = Laptop Culori 
+  |           ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:7:27: error:
+    * Illegal term-level use of the type constructor or class `Culori'
+    * defined at fisaLab3.hs:9:1
+    * In the first argument of `Laptop', namely `Culori'
+      In the expression: Laptop Culori
+      In an equation for `descriere': descriere Laptop = Laptop Culori
+  |
+7 | descriere Laptop = Laptop Culori
+  |                           ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:7:20: error:
+    * Illegal term-level use of the type constructor or class `Culori'
+    * defined at fisaLab3.hs:9:1
+    * In the expression: Culori
+      In an equation for `descriere': descriere Laptop = Culori
+  |
+7 | descriere Laptop = Culori
+  |                    ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:7:20: error:
+    * Illegal term-level use of the type constructor or class `Culori'
+    * defined at fisaLab3.hs:9:1
+    * In the expression: Culori
+      In an equation for `descriere': descriere Laptop = Culori
+  |
+7 | descriere Laptop = Culori
+  |                    ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:13:20: error:
+    * Illegal term-level use of the type constructor or class `Culori'
+    * defined at fisaLab3.hs:6:1
+    * In the expression: Culori
+      In an equation for `descriere': descriere Laptop = Culori
+   |
+13 | descriere Laptop = Culori
+   |                    ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+Ok, one module loaded.
+ghci> Laptop Blue
+Laptop Blue
+ghci> Laptop Blue
+Laptop Blue
+ghci> descriere Laptop Blue
+
+<interactive>:16:1: error:
+    Variable not in scope:
+      descriere :: (Culori -> MobileDevice) -> Culori -> t
+ghci> descriere (Laptop Blue)
+
+<interactive>:17:1: error:
+    Variable not in scope: descriere :: MobileDevice -> t
+ghci> :load fisaLab3.hs      
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:13:18: error: Not in scope: data constructor `Culori'
+   |
+13 | descriere Laptop Culori = Culori
+   |                  ^^^^^^
+
+fisaLab3.hs:14:18: error: Not in scope: data constructor `Culori'
+   |
+14 | descriere Tablet Culori = Culori
+   |                  ^^^^^^
+
+fisaLab3.hs:15:22: error: Not in scope: data constructor `Culori'
+   |
+15 | descriere Smartphone Culori = Culori
+   |                      ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:13:19: error: Not in scope: data constructor `Culori'
+   |
+13 | descriere (Laptop Culori) = Culori
+   |                   ^^^^^^
+
+fisaLab3.hs:14:19: error: Not in scope: data constructor `Culori'
+   |
+14 | descriere (Tablet Culori) = Culori
+   |                   ^^^^^^
+
+fisaLab3.hs:15:23: error: Not in scope: data constructor `Culori'
+   |
+15 | descriere (Smartphone Culori) = Culori
+   |                       ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:13:24: error:
+    * Illegal term-level use of the type constructor or class `Culori'
+    * defined at fisaLab3.hs:6:1
+    * In the expression: Culori
+      In an equation for `descriere': descriere (Laptop x) = Culori
+   |
+13 | descriere (Laptop x) = Culori
+   |                        ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:13:19: error: Not in scope: data constructor `Culori'
+   |
+13 | descriere (Laptop Culori) = Culori
+   |                   ^^^^^^
+
+fisaLab3.hs:14:19: error: Not in scope: data constructor `Culori'
+   |
+14 | descriere (Tablet Culori) = Culori
+   |                   ^^^^^^
+
+fisaLab3.hs:15:23: error: Not in scope: data constructor `Culori'
+   |
+15 | descriere (Smartphone Culori) = Culori
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+Ok, one module loaded.
+ghci> descriere (Laptop Pink)
+Pink
+ghci> :load fisaLab3.hs      
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:29:38: error: parse error on input `then'
+   |
+29 | isBST (Nod x l r) = if (maxBST x > x then False
+   |                                      ^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:31:21: error:
+    Unexpected if expression in function application:
+        if (minBST x < x) then False else isBST r
+    Suggested fixes:
+      * Use parentheses.
+      * Perhaps you intended to use BlockArguments
+   |
+31 |                     if (minBST x < x) then False
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:31:21: error:
+    Unexpected if expression in function application:
+        if minBST x < x then False else isBST r
+    Suggested fixes:
+      * Use parentheses.
+      * Perhaps you intended to use BlockArguments
+   |
+31 |                     if minBST x < x then False
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:29:38: error: parse error on input `then'
+   |
+29 | isBST (Nod x l r) = if (maxBST x > x then False
+   |                                      ^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:31:21: error:
+    Unexpected if expression in function application:
+        if minBST x < x then False else isBST r
+    Suggested fixes:
+      * Use parentheses.
+      * Perhaps you intended to use BlockArguments
+   |
+31 |                     if minBST x < x then False
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:32:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:31:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:31:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:31:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:31:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:25:22: error:
+    Variable not in scope: manBST :: Arb -> Integer
+    Suggested fix:
+      Perhaps use one of these: `maxBST' (line 24), `minBST' (line 20)
+   |
+25 | maxBST (Nod x l r) = manBST r
+   |                      ^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:29:30: error:
+    * Couldn't match expected type `Arb' with actual type `Integer'
+    * In the first argument of `maxBST', namely `x'
+      In the first argument of `(<)', namely `maxBST x'
+      In the first argument of `(&&)', namely `(maxBST x < x)'
+   |
+29 | isBST (Nod x l r) = ((maxBST x < x) && (minBST x > x) && isBST l && isBST r)
+   |                              ^
+
+fisaLab3.hs:29:48: error:
+    * Couldn't match expected type `Arb' with actual type `Integer'
+    * In the first argument of `minBST', namely `x'
+      In the first argument of `(>)', namely `minBST x'
+      In the first argument of `(&&)', namely `(minBST x > x)'
+   |
+29 | isBST (Nod x l r) = ((maxBST x < x) && (minBST x > x) && isBST l && isBST r)
+   |                                                ^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:29:29: error:
+    * Couldn't match expected type `Arb' with actual type `Integer'
+    * In the first argument of `maxBST', namely `x'
+      In the first argument of `(<)', namely `maxBST x'
+      In the first argument of `(&&)', namely `maxBST x < x'
+   |
+29 | isBST (Nod x l r) = (maxBST x < x && minBST x > x && isBST l && isBST r)
+   |                             ^
+
+fisaLab3.hs:29:45: error:
+    * Couldn't match expected type `Arb' with actual type `Integer'
+    * In the first argument of `minBST', namely `x'
+      In the first argument of `(>)', namely `minBST x'
+      In the first argument of `(&&)', namely `minBST x > x'
+   |
+29 | isBST (Nod x l r) = (maxBST x < x && minBST x > x && isBST l && isBST r)
+   |                                             ^
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+Ok, one module loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+Ok, one module loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:20:1: error:
+    Parse error: module header, import declaration
+    or top-level declaration expected.
+   |
+20 | minBST Frunza
+   | ^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :load fisaLab3.hs
+[1 of 2] Compiling Main             ( fisaLab3.hs, interpreted )
+
+fisaLab3.hs:35:11: error:
+    Variable not in scope: valore :: Integer
+    Suggested fix: Perhaps use `valoare' (line 33)
+   |
+35 |     | x < valore = search r valoare
+   |           ^^^^^^
+Failed, no modules loaded.
+ghci>      
