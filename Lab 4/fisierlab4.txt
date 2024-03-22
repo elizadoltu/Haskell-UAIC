@@ -1,0 +1,82 @@
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF> cd Haskell-UAIC
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF\Haskell-UAIC> cd "Lab 4"
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF\Haskell-UAIC\Lab 4> ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load fisa4lab.hs
+[1 of 2] Compiling Main             ( fisa4lab.hs, interpreted )
+Ok, one module loaded.
+ghci> process (+2) 4
+6
+ghci> :load fisa4lab.hs
+[1 of 2] Compiling Main             ( fisa4lab.hs, interpreted )
+Ok, one module loaded.
+ghci> function_ex2 (+2) 10 20
+[1 of 2] Compiling Main             ( fisa4lab.hs, interpreted )
+
+Ok, one module loaded.
+ghci> function_ex2 (+2) 10 20
+167
+ghci> :load fisa4lab.hs
+[1 of 2] Compiling Main             ( fisa4lab.hs, interpreted )
+
+Ok, one module loaded.
+ghci> function_ex2 (+2) 10 20
+187
+ghci> :load fisa4lab.hs      
+[1 of 2] Compiling Main             ( fisa4lab.hs, interpreted )
+Ok, one module loaded.
+ghci> func ((.) odd length) "aaa"
+
+<interactive>:10:23: error:
+    * Couldn't match type: [Char]
+                     with: a -> t0 a0
+      Expected: a -> t0 a0
+        Actual: String
+    * In the second argument of `func', namely `"aaa"'
+      In the expression: func ((.) odd length) "aaa"
+      In an equation for `it': it = func ((.) odd length) "aaa"
+    * Relevant bindings include
+        it :: a -> Bool (bound at <interactive>:10:1)
+ghci> func ((+ 2) 4 (+ 3) 7)
+
+<interactive>:11:1: error:
+    * Could not deduce (Num t0)
+      from the context: (Num t, Num a1, Num ((a1 -> a1) -> t -> b -> c))
+        bound by the inferred type for `it':
+                   forall {t} {a1} {b} {c} {a2}.
+                   (Num t, Num a1, Num ((a1 -> a1) -> t -> b -> c)) =>
+                   (a2 -> b) -> a2 -> c
+        at <interactive>:11:1-22
+      The type variable `t0' is ambiguous
+      Potentially matching instances:
+        instance Num Integer -- Defined in `GHC.Num'
+        instance Num Double -- Defined in `GHC.Float'
+        ...plus three others
+        ...plus two instances involving out-of-scope types      
+        (use -fprint-potential-instances to see them all)       
+    * In the ambiguity check for the inferred type for `it'     
+      To defer the ambiguity check to use sites, enable AllowAmbiguousTypes
+      When checking the inferred type
+        it :: forall {t} {a1} {b} {c} {a2}.
+              (Num t, Num a1, Num ((a1 -> a1) -> t -> b -> c)) =>
+              (a2 -> b) -> a2 -> c
+ghci> func ((+ 2) 4) ((+ 3) 7)
+
+<interactive>:12:1: error:
+    * Could not deduce (Num (b0 -> c))
+      from the context: (Num (b -> c), Num (a -> b))
+        bound by the inferred type for `it':
+                   forall {b} {c} {a}. (Num (b -> c), Num (a -> b)) => a -> c
+        at <interactive>:12:1-24
+    * In the ambiguity check for the inferred type for `it'
+    * In the ambiguity check for the inferred type for `it'
+      To defer the ambiguity check to use sites, enable AllowAmbiguousTypes
+    * In the ambiguity check for the inferred type for `it'    
+      To defer the ambiguity check to use sites, enable AllowAmbiguousTypes
+      When checking the inferred type
+        it :: forall {b} {c} {a}. (Num (b -> c), Num (a -> b)) => a -> c
+ghci> :load fisa4lab.hs
+[1 of 2] Compiling Main             ( fisa4lab.hs, interpreted )Ok, one module loaded.
+ghci> sumListFunc (+2) [1, 2, 3, 4]
+[3,4,5,6]
+ghci>
