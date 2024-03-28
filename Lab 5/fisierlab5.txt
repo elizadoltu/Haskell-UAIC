@@ -1,0 +1,102 @@
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF> cd Haskell-UAIC
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF\Haskell-UAIC> cd "Lab 5"
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF\Haskell-UAIC\Lab 5> ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load fisalab5.hs
+[1 of 2] Compiling Main             ( fisalab5.hs, interpreted )
+Ok, one module loaded.
+ghci> DoubleAddOne (DoubleAddOne (DoubleAddOne Zero))
+7
+ghci> :load fisalab5.hs
+[1 of 2] Compiling Main             ( fisalab5.hs, interpreted )
+Ok, one module loaded.
+ghci> Zero == Double Zero
+False
+ghci> :load fisalab5.hs  
+[1 of 2] Compiling Main             ( fisalab5.hs, interpreted )
+Ok, one module loaded.
+ghci> Zero == Double Zero
+True
+ghci> Zero == Double (Double Zero)
+False
+ghci> :load fisalab5.hs  
+[1 of 2] Compiling Main             ( fisalab5.hs, interpreted )    
+Ok, one module loaded.
+ghci> Zero == Double (Double Zero)
+True
+ghci> Zero == Double (Double (Double Zero))
+True
+ghci> Zero == Double (Double (DoubleAddOne Zero))
+True
+ghci> :load fisalab5.hs
+[1 of 2] Compiling Main             ( fisalab5.hs, interpreted )    
+Ok, one module loaded.
+ghci> Zero == Double (Double (DoubleAddOne Zero))
+False
+ghci> DoubleAddOne Zero = DoubleAddOne (DoubleAddOne Zero))
+
+<interactive>:14:53: error: parse error on input `)'
+ghci> DoubleAddOne Zero = DoubleAddOne (DoubleAddOne Zero)
+
+<interactive>:15:1: warning: [-Woverlapping-patterns]
+    Pattern match is redundant
+    In a pattern binding: DoubleAddOne Zero = ...
+ghci> DoubleAddOne Zero == DoubleAddOne (DoubleAddOne Zero)
+False
+ghci>
+ghci> :load fisalab5.hs
+[1 of 2] Compiling Main             ( fisalab5.hs, interpreted )
+Ok, one module loaded.
+ghci> sortCustom [1, 3, 6, 2, 1]
+
+<interactive>:19:1: error:
+    * Ambiguous type variable `a0' arising from a use of `print'
+      prevents the constraint `(Show a0)' from being solved.
+      Probable fix: use a type annotation to specify what `a0' should be.
+      Potentially matching instances:
+        instance Show Ordering -- Defined in `GHC.Show'
+        instance Show Nat -- Defined at fisalab5.hs:9:10
+        ...plus 26 others
+        ...plus 12 instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    * In a stmt of an interactive GHCi command: print it
+ghci> sortCustom [1, 3, 6, 2, 1] (>)
+
+<interactive>:20:1: error:
+    * Couldn't match expected type: (a1 -> a1 -> Bool) -> t
+                  with actual type: [a0]
+    * The function `sortCustom' is applied to two value arguments,
+        but its type `[a0] -> [a0]' has only one
+      In the expression: sortCustom [1, 3, 6, 2, ....] (>)
+      In an equation for `it': it = sortCustom [1, 3, 6, ....] (>)
+    * Relevant bindings include it :: t (bound at <interactive>:20:1)
+ghci> (>) sortCustom [1, 3, 6, 2, 1] 
+
+<interactive>:21:16: error:
+    * Couldn't match expected type: [a1] -> [a1]
+                  with actual type: [a0]
+    * In the second argument of `(>)', namely `[1, 3, 6, 2, ....]'
+      In the expression: (>) sortCustom [1, 3, 6, 2, ....]
+      In an equation for `it': it = (>) sortCustom [1, 3, 6, ....]
+ghci> (>) [1, 3, 6, 2, 1]            
+
+<interactive>:22:1: error:
+    * No instance for (Show ([Integer] -> Bool))
+        arising from a use of `print'
+        (maybe you haven't applied a function to enough arguments?)
+    * In a stmt of an interactive GHCi command: print it
+ghci> :load fisalab5.hs
+[1 of 2] Compiling Main             ( fisalab5.hs, interpreted )
+Ok, one module loaded.
+ghci> Succ ( Succ ( Succ Zero)))
+
+<interactive>:24:26: error: parse error on input `)'
+ghci> Succ ( Succ ( Succ Zero))
+
+<interactive>:25:20: error:
+    * Couldn't match expected type `Natural' with actual type `Nat'
+    * In the first argument of `Succ', namely `Zero'
+      In the first argument of `Succ', namely `(Succ Zero)'
+      In the first argument of `Succ', namely `(Succ (Succ Zero))'
+ghci> Succ ( Succ ( Succ MyZero))
+ssso
