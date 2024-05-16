@@ -1,0 +1,360 @@
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF\Haskell-UAIC> cd "Lab 10"
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF\Haskell-UAIC\Lab 10> ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load fisa10.hs
+[1 of 2] Compiling Main             ( fisa10.hs, interpreted )
+Ok, one module loaded.
+ghci> change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 4
+Just (Node 4 (Node 2 Nil Nil) (Node 3 Nil Nil),[])
+ghci> :load fisa10.hs
+[1 of 2] Compiling Main             ( fisa10.hs, interpreted )
+
+fisa10.hs:68:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+68 | let result = goUp zipper
+   | ^
+Failed, no modules loaded.
+ghci> :load fisa10.hs
+[1 of 2] Compiling Main             ( fisa10.hs, interpreted )
+
+fisa10.hs:68:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+Failed, no modules loaded.
+ghci> change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 4
+
+<interactive>:5:1: error:
+    Variable not in scope: change' :: (a0, [a1]) -> t9 -> t
+
+<interactive>:5:10: error:
+    Data constructor not in scope: Node :: t6 -> t7 -> t8 -> a0
+
+<interactive>:5:18: error:
+    Data constructor not in scope: Node :: t3 -> t4 -> t5 -> t7
+
+<interactive>:5:25: error: Data constructor not in scope: Nil
+
+<interactive>:5:29: error: Data constructor not in scope: Nil
+
+<interactive>:5:35: error:
+    Data constructor not in scope: Node :: t0 -> t1 -> t2 -> t8
+
+<interactive>:5:42: error: Data constructor not in scope: Nil
+
+<interactive>:5:46: error: Data constructor not in scope: Nil
+ghci> :load fisa10.hs
+[1 of 2] Compiling Main             ( fisa10.hs, interpreted )
+Ok, one module loaded.
+ghci> change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 4
+Just (Node 4 (Node 2 Nil Nil) (Node 3 Nil Nil),[])
+ghci> change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 3
+Just (Node 3 (Node 2 Nil Nil) (Node 3 Nil Nil),[])
+ghci> change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 4 5
+
+<interactive>:9:1: error:
+    * Couldn't match expected type: t0 -> t
+                  with actual type: Maybe Zipper
+    * The function change' is applied to three value arguments,
+        but its type `Zipper -> Int -> Maybe Zipper' has only two
+      In the expression:
+        change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 4 5
+      In an equation for `it':
+          it = change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 4 5
+    * Relevant bindings include it :: t (bound at <interactive>:9:1)
+ghci> change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 7  
+Just (Node 7 (Node 2 Nil Nil) (Node 3 Nil Nil),[])
+ghci> change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6
+Just (Node 6 (Node 2 Nil Nil) (Node 3 Nil Nil),[])
+ghci> goUp change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6
+
+<interactive>:12:1: error:
+    * Couldn't match expected type: (Arb, [a0]) -> t0 -> t
+                  with actual type: Maybe Zipper
+    * The function `goUp' is applied to three value arguments,
+        but its type `Zipper -> Maybe Zipper' has only one
+      In the expression:
+        goUp change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6
+      In an equation for `it':
+          it = goUp change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6
+    * Relevant bindings include it :: t (bound at <interactive>:12:1)
+
+<interactive>:12:6: error:
+    * Couldn't match type: Zipper -> Int -> Maybe Zipper
+                     with: (Arb, [Crumb])
+      Expected: Zipper
+        Actual: Zipper -> Int -> Maybe Zipper
+    * Probable cause: change' is applied to too few arguments
+      In the first argument of `goUp', namely change'
+      In the expression:
+        goUp change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6
+      In an equation for `it':
+          it = goUp change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6
+ghci> goUp (change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6)
+
+<interactive>:13:7: error:
+    * Couldn't match type: Maybe Zipper
+                     with: (Arb, [Crumb])
+      Expected: Zipper
+        Actual: Maybe Zipper
+    * In the first argument of `goUp', namely
+        `(change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6)'
+      In the expression:
+        goUp (change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6)
+      In an equation for `it':
+          it
+            = goUp (change' (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), []) 6)
+ghci> goUp (Node 1 (Node 2 Nil Nil) (Node 3 Nil Nil), [])            
+Nothing
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil)), [])
+
+<interactive>:15:15: error:
+    * Couldn't match expected type `Arb' with actual type `Arb -> Arb'
+    * Probable cause: `Node' is applied to too few arguments
+      In the second argument of `Node', namely
+        `(Node 2 (Node 4 Nil Nil))'
+      In the expression:
+        Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil))
+      In the first argument of `goUp', namely
+        `(Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil)), [])'
+
+<interactive>:15:41: error:
+    * Couldn't match expected type `Arb' with actual type `Arb -> Arb'
+    * Probable cause: `Node' is applied to too few arguments
+      In the third argument of `Node', namely `(Node 3 (Node 5 Nil Nil))'
+      In the expression:
+        Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil))
+      In the first argument of `goUp', namely
+        `(Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil)), [])'
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil)), [])                
+
+<interactive>:16:15: error:
+    * Couldn't match expected type `Arb' with actual type `Arb -> Arb'
+    * Probable cause: `Node' is applied to too few arguments
+      In the second argument of `Node', namely
+        `(Node 2 (Node 4 Nil Nil))'
+      In the expression:
+        Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil))
+      In the first argument of `goUp', namely
+        `(Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil)), [])'
+
+<interactive>:16:41: error:
+    * Couldn't match expected type `Arb' with actual type `Arb -> Arb'
+    * Probable cause: `Node' is applied to too few arguments
+      In the third argument of `Node', namely `(Node 3 (Node 5 Nil Nil))'
+      In the expression:
+        Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil))
+      In the first argument of `goUp', namely
+        `(Node 1 (Node 2 (Node 4 Nil Nil)) (Node 3 (Node 5 Nil Nil)), [])'
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), [])
+Nothing
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), []) 3
+
+<interactive>:18:1: error:
+    * Couldn't match expected type: t0 -> t
+                  with actual type: Maybe Zipper
+    * The function `goUp' is applied to two value arguments,
+        but its type `Zipper -> Maybe Zipper' has only one
+      In the expression:
+        goUp
+          (Node
+             1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+             (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+           [])
+          3
+      In an equation for `it':
+          it
+            = goUp
+                (Node
+                   1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+                   (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+                 [])
+                3
+    * Relevant bindings include it :: t (bound at <interactive>:18:1)
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), []) 4
+
+<interactive>:19:1: error:
+    * Couldn't match expected type: t0 -> t
+                  with actual type: Maybe Zipper
+    * The function `goUp' is applied to two value arguments,
+        but its type `Zipper -> Maybe Zipper' has only one
+      In the expression:
+        goUp
+          (Node
+             1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+             (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+           [])
+          4
+      In an equation for `it':
+          it
+            = goUp
+                (Node
+                   1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+                   (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+                 [])
+                4
+    * Relevant bindings include it :: t (bound at <interactive>:19:1)
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), []) 8
+
+<interactive>:20:1: error:
+    * Couldn't match expected type: t0 -> t
+                  with actual type: Maybe Zipper
+    * The function `goUp' is applied to two value arguments,
+        but its type `Zipper -> Maybe Zipper' has only one
+      In the expression:
+        goUp
+          (Node
+             1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+             (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+           [])
+          8
+      In an equation for `it':
+          it
+            = goUp
+                (Node
+                   1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+                   (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+                 [])
+                8
+    * Relevant bindings include it :: t (bound at <interactive>:20:1)
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), []) 81
+
+<interactive>:21:1: error:
+    * Couldn't match expected type: t0 -> t
+                  with actual type: Maybe Zipper
+    * The function `goUp' is applied to two value arguments,
+        but its type `Zipper -> Maybe Zipper' has only one
+      In the expression:
+        goUp
+          (Node
+             1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+             (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+           [])
+          81
+      In an equation for `it':
+          it
+            = goUp
+                (Node
+                   1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+                   (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+                 [])
+                81
+    * Relevant bindings include it :: t (bound at <interactive>:21:1)
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), []) 1 
+
+<interactive>:22:1: error:
+    * Couldn't match expected type: t0 -> t
+                  with actual type: Maybe Zipper
+    * The function `goUp' is applied to two value arguments,
+        but its type `Zipper -> Maybe Zipper' has only one
+      In the expression:
+        goUp
+          (Node
+             1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+             (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+           [])
+          1
+      In an equation for `it':
+          it
+            = goUp
+                (Node
+                   1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil))
+                   (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), 
+                 [])
+                1
+    * Relevant bindings include it :: t (bound at <interactive>:22:1)
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), [])  
+Nothing
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), []) 
+Nothing
+ghci> goUp t1
+
+<interactive>:25:6: error:
+    * Couldn't match type `Arb' with `(Arb, [Crumb])'
+      Expected: Zipper
+        Actual: Arb
+    * In the first argument of `goUp', namely `t1'
+      In the expression: goUp t1
+      In an equation for `it': it = goUp t1
+ghci> goUp t1 []                                                                                              
+
+<interactive>:26:1: error:
+    * Couldn't match expected type: [a0] -> t
+                  with actual type: Maybe Zipper
+    * The function `goUp' is applied to two value arguments,
+        but its type `Zipper -> Maybe Zipper' has only one
+      In the expression: goUp t1 []
+      In an equation for `it': it = goUp t1 []
+    * Relevant bindings include it :: t (bound at <interactive>:26:1)
+
+<interactive>:26:6: error:
+    * Couldn't match type `Arb' with `(Arb, [Crumb])'
+      Expected: Zipper
+        Actual: Arb
+    * In the first argument of `goUp', namely `t1'
+      In the expression: goUp t1 []
+      In an equation for `it': it = goUp t1 []
+ghci> goUp (Node 1 (Node 2 (Node 4 Nil Nil) (Node 6 Nil Nil)) (Node 3 (Node 5 Nil Nil) (Node 7 Nil Nil)), []) 
+Nothing
+ghci> goUp (t1, [])                                                                                            
+Nothing
+ghci> goUp (t1, []) >>= goRight
+Nothing
+ghci> goUp (t1, []) >>= goRight >>= goUp
+Nothing
+ghci> goLeft (t1, []) >>= goRight >>= goUp
+Just (Node 2 (Node 4 Nil Nil) (Node 5 Nil Nil),[LeftCrumb 1 (Node 3 Nil Nil)])
+Left
+Just (Node 4 Nil Nil,[Left 2 (Node 5 Nil Nil),Left 1 (Node 3 Nil Nil)])
+ghci> goLeft (t1, []) >>= goRight >>= goUp
+Just (Node 2 (Node 4 Nil Nil) (Node 5 Nil Nil),[Left 1 (Node 3 Nil Nil)])
+ghci> goLeft (t1, []) >>= goRight >>= goUp >>= goRight
+Just (Node 4 Nil Nil,[Right 2 (Node 5 Nil Nil),Left 1 (Node 3 Nil Nil)])
+ghci>
+ghci> goLeftList ([1, 2, 4, 5], [])
+
+<interactive>:38:1: error:
+    Variable not in scope: goLeftList :: ([a0], [a1]) -> t
+ghci> goLeftList ([1, 2, 4, 5], [1, 2, 4 ,5])
+
+<interactive>:39:1: error:
+    Variable not in scope: goLeftList :: ([a0], [a1]) -> t
+ghci> goLeft (t1, []) >>= goRight >>= goUp >>= goRight
+Just (Node 4 Nil Nil,[Right 2 (Node 5 Nil Nil),Left 1 (Node 3 Nil Nil)])
+ghci> goLeftList ([1, 2, 4], [1, 2, 3])      
+
+<interactive>:41:1: error:
+    Variable not in scope: goLeftList :: ([a0], [a1]) -> t
+ghci> atPos [t] [DownDir, RightDir, DownDir, RightDir, RightDir]
+
+<interactive>:42:1: error:
+    Variable not in scope: atPos :: [a0] -> [a1] -> t
+
+<interactive>:42:8: error: Variable not in scope: t
+
+<interactive>:42:12: error: Data constructor not in scope: DownDir
+
+<interactive>:42:21: error: Data constructor not in scope: RightDir
+
+<interactive>:42:31: error: Data constructor not in scope: DownDir
+
+<interactive>:42:40: error: Data constructor not in scope: RightDir
+
+<interactive>:42:50: error: Data constructor not in scope: RightDir
+ghci> :r
+[1 of 2] Compiling Main             ( fisa10.hs, interpreted ) [Source file changed]
+
+fisa10.hs:91:1: warning: [-Woverlapping-patterns]
+    Pattern match has inaccessible right hand side
+    In an equation for `atPos': atPos (Node' v _ : _) [] = ...
+   |
+91 | atPos (Node' v _ : _) [] = Just v
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ok, one module loaded.
+ghci> atPos [t] [DownDir, RightDir, DownDir, RightDir, RightDir]
+Nothing
+ghci> :r
+[1 of 2] Compiling Main             ( fisa10.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> atPos [t] [DownDir, RightDir, DownDir, RightDir, RightDir]
+22
+ghci>
