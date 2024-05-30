@@ -1,0 +1,205 @@
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF\Haskell-UAIC> cd "Lab 12"
+PS C:\Users\Admin\Desktop\Proiecte\Facultate\PF\Haskell-UAIC\Lab 12> ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load fisa12.h
+target `fisa12.h' is not a module name or a source file
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> test1
+Var "y"
+ghci> test2
+Var "x"
+ghci> test3
+App (Var "x") (Var "z")
+ghci> test6
+Lambda "y" (App (Var "y") (Lambda "z" (Var "z")))
+ghci> tests
+[Var "y",Var "x",App (Var "x") (Var "z"),App (Var "z") (Var "x"),Lambda "x" (App (Var "x") (Var "y")),Lambda "y" (App (Var "y") (Lambda "z" (Var "z")))]
+ghci> test 5
+
+<interactive>:10:1: error:
+    Variable not in scope: test :: t0 -> t
+    Suggested fix:
+      Perhaps use one of these:
+        `test1' (line 33), `test2' (line 35), `test3' (line 37)
+ghci> test5 
+Lambda "x" (App (Var "x") (Var "y"))
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> test5
+Lambda "x" (App (Var "x") (Var "y"))
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> test5
+Lambda "x" (App (Var "y") (Var "x"))
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testRemove1
+
+<interactive>:17:1: error: Variable not in scope: testRemove1
+ghci> testRemov2 
+
+<interactive>:18:1: error: Variable not in scope: testRemov2
+ghci> testRemove2
+
+<interactive>:19:1: error: Variable not in scope: testRemove2
+ghci>
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testRemove1
+["y","z"]
+ghci> testRemove2
+["x","y","x","z"]
+ghci> testRemove3
+[]
+ghci> testRemove4
+[]
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testFree1
+Lambda "y" (App (Var "x") (Var "y"))
+ghci> testFree2
+
+<interactive>:28:1: error:
+    Variable not in scope: testFree2
+    Suggested fix:
+      Perhaps use one of these:
+        `testFree' (line 67), `testFree1' (line 66)
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testFree2
+Lambda "x" (App (Var "y") (Var "x"))
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testFree1
+["x"]
+ghci> testFree2
+["y"]
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testVars1
+["x","y","x"]
+ghci> testVars2
+["y","x","y"]
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testFresh1
+"n3"
+ghci> testFresh2
+"n2"
+ghci> testFresh3
+"n5"
+ghci> testFresh4
+"n0"
+ghci> testFresh5
+"n0"
+ghci> testFresh6
+"n3"
+(i-search)`': 
+(i-search)`': 
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testFresh6     
+"n3"
+ghci> testFresh5     
+"n0"
+ghci> testFresh4     
+"n0"
+ghci> testFresh3     
+"n5"
+ghci> testFree1
+["x"]
+ghci> testFree2
+["y"]
+ghci> testFree3
+
+<interactive>:51:1: error:
+    Variable not in scope: testFree3
+    Suggested fix:
+      Perhaps use one of these:
+        `testFree1' (line 66), `testFree2' (line 67),
+        `testFresh3' (line 91)
+ghci> testFree2
+["y"]
+ghci> testFree2
+["y"]
+ghci> testFree2
+["y"]
+ghci> testFree2
+["y"]
+ghci> testVars1
+["x","y","x"]
+ghci> testVar2
+
+<interactive>:57:1: error:
+    Variable not in scope: testVar2
+    Suggested fix:
+      Perhaps use one of these:
+        `testVars2' (line 75), `testVars1' (line 74)
+ghci> testVars2
+["y","x","y"]
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testFresh1
+"n3"
+ghci> testFresh2
+"n2"
+ghci> testFresh3
+"n5"
+ghci> testFresh4
+"n0"
+ghci> testFresh5
+"n0"
+ghci> testFresh6
+"n3"
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testCasubst1
+Var "y"
+ghci> testCasubst2
+Var "x"
+ghci> testCasubst3
+App (Var "x") (Var "z")
+ghci> testCasubst4
+App (Var "z") (Var "x")
+ghci> testCasubst5
+Lambda "x" (App (Var "y") (Var "x"))
+ghci> testCasubst6
+Lambda "y" (App (Var "y") (Lambda "z" (Var "z")))
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> testCasubst7
+Lambda "n0" (Var "x")
+ghci> :load fisa12.hs
+preted )
+Ok, one module loaded.
+ghci> testReduce10
+Nothing
+ghci> testReduce12
+Nothing
+ghci> testReduce13
+Nothing
+ghci> :load fisa12.hs
+[1 of 2] Compiling Main             ( fisa12.hs, interpreted )
+Ok, one module loaded.
+ghci> ex2
+Just (Lambda "x" (Var "x"))
+ghci> ex3
+Just (Lambda "y" (Lambda "x" (Lambda "x" (Var "x"))))
+ghci> ex4
+Just (Lambda "x" (App (Lambda "x" (Var "x")) (Lambda "x" (Var "x"))))
+ghci>
